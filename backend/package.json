@@ -1,0 +1,11 @@
+{
+  "name": "library_backend",
+  "version": "1.0.0",
+  "description": "Backend packages for the backend processes",
+  "main": "server.mjs",
+  "scripts": {
+    "dev": "nodemon server.mjs"
+  },
+  "author": "Gourav",
+  "license": "ISC"
+}
