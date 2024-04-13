@@ -1,5 +1,6 @@
 import bcrypt from "bcrypt"
 import { User } from "../models/user.model.mjs"
+import { genAndSetJWT } from "../utils/jwtGenerator.mjs"
 
 export const registerController = async (req, res) => {
     try {
@@ -19,6 +20,7 @@ export const registerController = async (req, res) => {
         })
         if (newUser) {
             const userCreated = await newUser.save()
+            genAndSetJWT(userCreated._id,res)
             res.status(201).json({
                 id: userCreated._id,
                 firstname,
@@ -33,9 +35,32 @@ export const registerController = async (req, res) => {
     }
     catch (err) {
         const errorMessage = (err.message)
-        console.log(errorMessage)
+        console.log('Error in register controller \n',errorMessage)
         if (errorMessage.includes("E11000")) return res.status(401).json({ "message": "Email entered already exist!" })
         if (errorMessage.includes("User validation failed")) return res.status(401).json({ "message": errorMessage })
         res.status(500).json({ "message": "Internal Server Error" })
+    }
+}
+
+export const loginController=async(req,res)=>{
+    try {
+        //server side valiation
+        const {email,password}=req.body
+        if(!email||!password) return res.status(400).json({"message":"Invalid request please fill all the fields"})
+        
+        //check if the email is present in db or not 
+        const loginUser=await User.findOne({email})
+        if(!loginUser) return res.status(404).json({"message":"Email or Password entered is wrong please check again"})
+
+        //passoword validation
+        const isPasswordCorrect=await bcrypt.compare(password,loginUser.password)
+        if(!isPasswordCorrect) return res.status(400).json({"message":"Email or Password entered is wrong please check again"})
+
+        //generate the token
+        genAndSetJWT(loginUser._id,res)
+        res.status(200).json({"message":"Logged successfully"})
+    } catch (error) {
+        console.log("Error in login controller\n",error.message)
+        res.status(500).json({"message":"Internal Server Error"})
     }
 }
