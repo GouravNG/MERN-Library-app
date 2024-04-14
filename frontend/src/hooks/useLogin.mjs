@@ -11,7 +11,7 @@ export const useLogiing = () => {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(requestBody)
             })
-            const responce = data.json()
+            const responce = await data.json()
             if (responce.error) throw new Error(responce.error)
             console.log(responce)
         }
