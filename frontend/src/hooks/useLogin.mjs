@@ -1,7 +1,9 @@
 import { useState } from "react"
+import { useAuthContext } from "../context/auth.context"
 
 export const useLogiing = () => {
     const [isLoading, SetisLoading] = useState(false)
+    const {setAuthUser}=useAuthContext()
     const handleLogin = async (requestBody) => {
         if (!clientSideValidation(requestBody)) return
         SetisLoading(true)
@@ -12,11 +14,13 @@ export const useLogiing = () => {
                 body: JSON.stringify(requestBody)
             })
             const responce = await data.json()
-            if (responce.error) throw new Error(responce.error)
             console.log(responce)
+            if (responce.error) throw new Error(responce.error)
+            localStorage.setItem("logged-user",JSON.stringify(responce))
+            setAuthUser(responce)   
         }
-        catch (err) {
-            console.err(`Somethin went wrong`, err.message)
+        catch (err) { 
+            console.error(`Somethin went wrong`, err.message)
             console.log("Error in UseLogin hook\n", err.message)
         }
         finally {

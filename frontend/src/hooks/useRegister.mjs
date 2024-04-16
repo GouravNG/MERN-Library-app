@@ -1,7 +1,9 @@
 import { useState } from "react"
+import { useAuthContext } from "../context/auth.context"
 
 export const useRegister = () => {
     const [isLoading, SetisLoading] = useState(false)
+    const { setAuthUser } = useAuthContext()
     const handleRegister = async (requestBody) => {
         if (!clientSideValidation(requestBody)) return
         SetisLoading(true)
@@ -12,8 +14,10 @@ export const useRegister = () => {
                 body: JSON.stringify(requestBody)
             })
             const registerResponce = await data.json()
-            if (registerResponce.error) throw new Error(registerResponce.error)
             console.log(registerResponce)
+            if (registerResponce.error) throw new Error(registerResponce.error)
+            localStorage.setItem("logged-user", JSON.stringify(registerResponce))
+            setAuthUser(registerResponce)
         }
         catch (err) {
             console.error(err.message)
