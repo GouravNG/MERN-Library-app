@@ -13,7 +13,7 @@ const bookSchema = mongoose.Schema({
             message: 'Please enter valid genres'
         }
     },
-    authorName: {
+    authorInfo: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: "User"
