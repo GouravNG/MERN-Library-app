@@ -4,16 +4,16 @@ import { User } from "../models/user.model.mjs"
 export const getAllBooks = async (req, res) => {
     try {
         const allBooks = await Books.find().populate({
-            path:"authorInfo",
-            select:"firstname lastname"
+            path: "authorInfo",
+            select: "firstname lastname"
         })
         res.status(200).json(allBooks)
     }
     catch (error) {
         console.log("Problem in getAllBooks function\n", error.message)
         res.status(500).json({
-            "error":"Something Went Wrong",
-            "Message":"Something Went Wrong"
+            "error": "Something Went Wrong",
+            "Message": "Something Went Wrong"
         })
     }
 }
@@ -34,7 +34,6 @@ export const createBook = async (req, res) => {
         })
         //create the book 
         const newBook = new Books({ title, genres, authorInfo: authorData._id, price })
-        console.log(newBook)
         if (newBook) {
             const newBookcreated = await newBook.save()
             res.status(201).json(newBookcreated)
@@ -69,8 +68,8 @@ export const getBookById = async (req, res) => {
     } catch (error) {
         console.log("Error in create book function \n ")
         res.status(500).json({
-            "error":"Something went wrong",
-            "Message":"Something went wrong"
+            "error": "Something went wrong",
+            "Message": "Something went wrong"
         })
     }
 }

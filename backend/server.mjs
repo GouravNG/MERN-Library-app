@@ -1,4 +1,5 @@
 import express from "express"
+import cookieParser from "cookie-parser"
 import dotenv from "dotenv"
 dotenv.config({ path: "../.env"})
 
@@ -15,6 +16,7 @@ app.get("/", (req, res) => {
 })
 
 app.use(express.json())
+app.use(cookieParser())
 app.use("/api/auth", Auth)
 app.use("/api/books",books)
 
