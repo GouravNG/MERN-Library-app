@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
-import jData from '../../dummyData/getAllBook.json'
 import './bookShelf.css'
+import { useGetAllBooks } from '../../hooks/useGetAllBooks.mjs'
+import { Loading } from '../../components/Loading/Loading.component'
+import { useEffect, useState } from 'react'
 const EachBook = ({ bookInfos }) => {
     const { title, authorInfo } = bookInfos
     return (
@@ -18,7 +20,16 @@ const EachBook = ({ bookInfos }) => {
     )
 }
 export const BookShelf = () => {
-    return jData.map((i) => {
-        return <EachBook key={i._id} bookInfos={i} />
+    const { isloading, isEmpty, getAllBooks } = useGetAllBooks()
+    const [allBook, setAllBooks] = useState([])
+    useEffect(() => {
+        async function setTheBookData() {
+            const data = await getAllBooks()
+            setAllBooks(data)
+        }
+        setTheBookData()
+    }, [])
+    return allBook.map((i) => {
+        return isloading ? <Loading /> : isEmpty ? <h1>No books found</h1> : <EachBook key={i._id} bookInfos={i} />
     })
 }
