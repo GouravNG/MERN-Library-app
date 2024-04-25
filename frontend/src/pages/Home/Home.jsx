@@ -3,6 +3,7 @@ import { useAuthContext } from '../../context/auth.context'
 import './home.css'
 import { Header } from '../../components/Header/Header'
 import { Content } from '../../components/Content/Content'
+import { Footer } from '../../components/Footer/Footer'
 const Home = () => {
     const { setAuthUser } = useAuthContext()
     useEffect(() => {
@@ -19,7 +20,8 @@ const Home = () => {
     return (
         <>
             <Header />
-            <Content/>
+            <Content />
+            <Footer />
         </>
     )
 }

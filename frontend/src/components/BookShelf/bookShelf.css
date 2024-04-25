@@ -1,5 +1,30 @@
-.each-book{
-    border: 2px solid red;
-    padding: 2rem;
-    margin: 3rem;
+.book-container {
+    display: flex;
+    flex-direction: column;
+    /* border: solid 2px red; */
+    background-color: #8decb4;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 20px;
+}
+
+.book-container:hover {
+    transform: scale(1.1);
+    transition: .5s;
+}
+
+.book-container p {
+    padding-left: 1.3rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.book {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 2em;
+    height: 200px;
+    width: 200px;
+    /* border: solid 2px red; */
+    background-color: #41b06e;
+    margin: 1rem;
+    border-radius: 0px 20px 20px 0px;
+    padding: 2rem 1rem;
 }

@@ -28,10 +28,13 @@
 .utility-bar > :last-child:hover {
     background: #ea7c2e;
 }
-.book-shelf{
-    border: 2px solid red;
-    margin: 3rem 6rem;
+.book-shelf {
+    /* border: 2px solid red; */
+    background-color: #daffd1   ;
+    margin: 3rem 12rem;
     display: flex;
+    padding: 2rem;
+    border-radius: 25px;
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
