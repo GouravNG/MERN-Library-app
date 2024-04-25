@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { useAuthContext } from '../../context/auth.context'
-
+import './home.css'
+import { Header } from '../../components/Header/Header'
+import { Content } from '../../components/Content/Content'
 const Home = () => {
     const { setAuthUser } = useAuthContext()
     useEffect(() => {
@@ -14,6 +16,11 @@ const Home = () => {
         }
         validate()
     })
-    return <h1>Home page is in progress</h1>
+    return (
+        <>
+            <Header />
+            <Content/>
+        </>
+    )
 }
 export default Home
