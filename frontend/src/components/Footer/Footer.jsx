@@ -1,4 +1,5 @@
 import './footer.css'
-export const Footer = () => {
+const Footer = () => {
     return <div className='footer'> 💖 Happy reading...</div>
 }
+export default Footer

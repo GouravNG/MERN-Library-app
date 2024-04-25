@@ -1,6 +1,6 @@
 import './content.css'
-import {BookShelf} from "../BookShelf/BookShelf.jsx"
-export const Content = () => {
+import { BookShelf } from '../BookShelf/BookShelf.jsx'
+const Content = () => {
     return (
         <>
             <div className='content'>
@@ -21,9 +21,10 @@ export const Content = () => {
                     <button className='utilibty-buttons'>Submit</button>
                 </div>
                 <div className='book-shelf'>
-                    <BookShelf/>
+                    <BookShelf />
                 </div>
             </div>
         </>
     )
 }
+export default Content
