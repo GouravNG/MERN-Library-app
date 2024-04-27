@@ -27,7 +27,8 @@ const userSchema = mongoose.Schema({
         default: 0
     },
     address: {
-        type: String
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"Address"
     },
     booksOwned: {
         type: String
