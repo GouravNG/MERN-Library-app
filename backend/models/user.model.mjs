@@ -16,7 +16,7 @@ const userSchema = mongoose.Schema({
         required: true,
         trim: true,
         unique: true,
-        lowercase:true,   
+        lowercase: true,
     },
     password: {
         type: String,
@@ -28,13 +28,17 @@ const userSchema = mongoose.Schema({
     },
     address: {
         type: mongoose.Schema.Types.ObjectId,
-        ref:"Address"
+        ref: "Address"
     },
     booksOwned: {
         type: String
     },
     booksRented: {
         type: String
+    },
+    authorId: {
+        type: String,
+        default: ""
     }
 
 }, { timestamps: true })

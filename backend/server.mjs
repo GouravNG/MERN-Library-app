@@ -21,7 +21,7 @@ app.use(express.json())
 app.use(cookieParser())
 app.use("/api/auth", Auth)
 app.use("/api/books", books)
-// app.use("/api/author", author)
+app.use("/api/author", author)
 app.use("/api/address", address)
 
 app.listen(PORT, () => {
