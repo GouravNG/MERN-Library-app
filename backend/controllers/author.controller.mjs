@@ -23,10 +23,15 @@ export const beauthor = async (req, res) => {
         const newAuthor = await Author.create({
             authorInfo: userDetails._id, dob
         })
-        console.log(newAuthor._id)
         userDetails.authorId = newAuthor._id
         userDetails.save()
-        await newAuthor.populate("authorInfo")
+        await newAuthor.populate({
+            path: "authorInfo",
+            select: "firstname lastname email address",
+            populate: {
+                path: "address"
+            }
+        })
         if (!newAuthor) return res.status(500).json({
             "error": "Internal server error",
             "message": "Internal server error"

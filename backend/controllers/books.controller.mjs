@@ -28,7 +28,7 @@ export const createBook = async (req, res) => {
         })
         //find the author using the id
         const authorData = await User.findById(authorid)
-        if (!authorData) return res.status(400).json({
+        if (!authorData.toObject().authorId) return res.status(400).json({
             "error": "User not found",
             "message": "Please make sure you are an author"
         })
