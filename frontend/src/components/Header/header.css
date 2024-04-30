@@ -27,3 +27,15 @@
     font-size: 2em;
     padding: 0.6rem;
 }
+.profileCard {
+    visibility: hidden;
+}
+
+.profile:hover .profileCard {
+    visibility: visible;
+    background-color: #0077b6;
+    border-radius: 30px;
+    padding: 1.5rem 0rem;
+    position: absolute;
+    right: 50px;
+}
