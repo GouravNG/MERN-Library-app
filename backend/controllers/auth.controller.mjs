@@ -33,7 +33,9 @@ export const registerController = async (req, res) => {
                 lastname,
                 email,
                 credit: userCreated.credit,
-                usersince: userCreated.createdAt
+                usersince: userCreated.createdAt,
+                booksOwned: userCreated.booksOwned,
+                booksRented: userCreated.booksRented
             })
         }
         else
@@ -91,7 +93,9 @@ export const loginController = async (req, res) => {
             lastname: loginUser.lastname,
             email: loginUser.email,
             credit: loginUser.credit,
-            usersince: loginUser.createdAt
+            usersince: loginUser.createdAt,
+            booksOwned: loginUser.booksOwned,
+            booksRented: loginUser.booksRented
         })
     } catch (error) {
         console.log("Error in login controller\n", error.message)

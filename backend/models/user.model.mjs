@@ -31,10 +31,12 @@ const userSchema = mongoose.Schema({
         ref: "Address"
     },
     booksOwned: {
-        type: String
+        type: Number,
+        default:0
     },
     booksRented: {
-        type: String
+        type: Number,
+        default:0
     },
     authorId: {
         type: String,
