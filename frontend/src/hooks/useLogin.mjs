@@ -14,10 +14,9 @@ export const useLogiing = () => {
                 body: JSON.stringify(requestBody)
             })
             const responce = await data.json()
-            console.log(responce)
             if (responce.error) throw new Error(responce.error)
             localStorage.setItem("logged-user",JSON.stringify(responce))
-            setAuthUser(responce)   
+            setAuthUser(JSON.parse(localStorage.getItem('logged-user'))||"")
         }
         catch (err) { 
             console.error(`Somethin went wrong`, err.message)

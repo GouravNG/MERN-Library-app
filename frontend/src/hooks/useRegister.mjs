@@ -17,7 +17,7 @@ export const useRegister = () => {
             console.log(registerResponce)
             if (registerResponce.error) throw new Error(registerResponce.error)
             localStorage.setItem("logged-user", JSON.stringify(registerResponce))
-            setAuthUser(registerResponce)
+            setAuthUser(JSON.parse(localStorage.getItem('logged-user'))||"")
         }
         catch (err) {
             console.error(err.message)
