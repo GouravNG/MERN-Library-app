@@ -1,8 +1,10 @@
 import { useAuthContext } from '../../context/auth.context'
+import { useLogout } from '../../hooks/useLogout.mjs'
 import { nameIcon } from '../../utils/nameIcon.mjs'
 import './profile.css'
 export const Profilecard = () => {
     const { authUser } = useAuthContext()
+    const  handleLogout  = useLogout()
     const { firstname, lastname, credit, booksOwned, booksRented } = JSON.parse(JSON.stringify(authUser))
     return (
         <>
@@ -23,8 +25,14 @@ export const Profilecard = () => {
                     </div>
                 </div>
                 <div className='other-buttons'>
-                    <button>View Full profile</button>
-                    <button>Logout</button>
+                    <button
+                        onClick={(e) => {
+                            console.log('hello')
+                        }}
+                    >
+                        View Full profile
+                    </button>
+                    <button onClick={(e)=>handleLogout()}>Logout</button>
                 </div>
             </div>
         </>

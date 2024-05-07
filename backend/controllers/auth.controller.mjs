@@ -111,6 +111,6 @@ export const logoutController = async (req, res) => {
         })
     } catch (error) {
         console.log(error.message)
-        res.status(500).send("Something went wrong!")
+        res.status(500).json({ "error": "Internal Server error,Something went wrong" })
     }
 }
