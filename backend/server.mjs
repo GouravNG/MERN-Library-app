@@ -8,6 +8,7 @@ import Auth from "./routes/auth.route.mjs"
 import books from "./routes/book.route.mjs"
 import author from "./routes/author.route.mjs"
 import address from "./routes/address.route.mjs"
+import userRoute from "./routes/user.route.mjs"
 
 const app = express()
 const PORT = process.env.PORT || "8080"
@@ -23,6 +24,7 @@ app.use("/api/auth", Auth)
 app.use("/api/books", books)
 app.use("/api/author", author)
 app.use("/api/address", address)
+app.use("/api/user",userRoute)
 
 app.listen(PORT, () => {
     mongoConnection(mongodbConnectionString)
