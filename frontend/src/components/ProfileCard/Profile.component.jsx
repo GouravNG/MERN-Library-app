@@ -4,7 +4,7 @@ import { nameIcon } from '../../utils/nameIcon.mjs'
 import './profile.css'
 export const Profilecard = () => {
     const { authUser } = useAuthContext()
-    const  handleLogout  = useLogout()
+    const handleLogout = useLogout()
     const { firstname, lastname, credit, booksOwned, booksRented } = JSON.parse(JSON.stringify(authUser))
     return (
         <>
@@ -25,14 +25,8 @@ export const Profilecard = () => {
                     </div>
                 </div>
                 <div className='other-buttons'>
-                    <button
-                        onClick={(e) => {
-                            console.log('hello')
-                        }}
-                    >
-                        View Full profile
-                    </button>
-                    <button onClick={(e)=>handleLogout()}>Logout</button>
+                    <button onClick={() => console.log("hi")}>View Full profile</button>
+                    <button onClick={() => handleLogout()}>Logout</button>
                 </div>
             </div>
         </>
